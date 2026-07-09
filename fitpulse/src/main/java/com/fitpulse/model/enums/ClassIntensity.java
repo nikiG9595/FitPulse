@@ -1,3 +1,3 @@
 package com.fitpulse.model.enums;
 
-public enum ClassIntensity { LOW, MEDIUM, HIGH }
+public enum ClassIntensity {LOW, MEDIUM, HIGH}

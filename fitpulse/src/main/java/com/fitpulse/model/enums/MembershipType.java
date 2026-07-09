@@ -1,3 +1,3 @@
 package com.fitpulse.model.enums;
 
-public enum MembershipType { BASIC, PREMIUM, VIP }
+public enum MembershipType {BASIC, PREMIUM, VIP}

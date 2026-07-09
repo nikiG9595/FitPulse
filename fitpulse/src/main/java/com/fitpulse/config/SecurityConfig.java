@@ -20,6 +20,9 @@ public class SecurityConfig {
                 .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll())
                 .build();
     }
+
     @Bean
-    public PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(); }
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

@@ -3,6 +3,7 @@ package com.fitpulse.model.dto;
 import com.fitpulse.model.enums.ClassIntensity;
 import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -28,18 +29,60 @@ public class GymClassRequest {
     private String description;
     @NotNull(message = "Required membership is required")
     private UUID requiredMembershipId;
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
-    public String getTrainerName() { return trainerName; }
-    public void setTrainerName(String trainerName) { this.trainerName = trainerName; }
-    public LocalDateTime getStartsAt() { return startsAt; }
-    public void setStartsAt(LocalDateTime startsAt) { this.startsAt = startsAt; }
-    public Integer getCapacity() { return capacity; }
-    public void setCapacity(Integer capacity) { this.capacity = capacity; }
-    public ClassIntensity getIntensity() { return intensity; }
-    public void setIntensity(ClassIntensity intensity) { this.intensity = intensity; }
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-    public UUID getRequiredMembershipId() { return requiredMembershipId; }
-    public void setRequiredMembershipId(UUID requiredMembershipId) { this.requiredMembershipId = requiredMembershipId; }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTrainerName() {
+        return trainerName;
+    }
+
+    public void setTrainerName(String trainerName) {
+        this.trainerName = trainerName;
+    }
+
+    public LocalDateTime getStartsAt() {
+        return startsAt;
+    }
+
+    public void setStartsAt(LocalDateTime startsAt) {
+        this.startsAt = startsAt;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
+    }
+
+    public ClassIntensity getIntensity() {
+        return intensity;
+    }
+
+    public void setIntensity(ClassIntensity intensity) {
+        this.intensity = intensity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public UUID getRequiredMembershipId() {
+        return requiredMembershipId;
+    }
+
+    public void setRequiredMembershipId(UUID requiredMembershipId) {
+        this.requiredMembershipId = requiredMembershipId;
+    }
 }

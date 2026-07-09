@@ -10,6 +10,7 @@ import java.util.UUID;
 
 public interface MembershipRepository extends JpaRepository<Membership, UUID> {
     Optional<Membership> findByType(MembershipType type);
+
     boolean existsByType(MembershipType type);
 
     List<Membership> findAllByOrderByPriceAsc();

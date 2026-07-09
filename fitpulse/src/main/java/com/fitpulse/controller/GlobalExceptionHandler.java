@@ -8,5 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(FitPulseException.class)
-    public String handleFitPulse(FitPulseException exception, Model model) { model.addAttribute("message", exception.getMessage()); return "error/custom-error"; }
+    public String handleFitPulse(FitPulseException exception, Model model) {
+        model.addAttribute("message", exception.getMessage());
+        return "error/custom-error";
+    }
 }

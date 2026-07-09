@@ -10,7 +10,7 @@
         <li class="nav-item" sec:authorize="isAuthenticated()"><a class="nav-link" href="/profile">Profile</a></li>
         <li class="nav-item" sec:authorize="hasRole('ADMIN')"><a class="btn btn-pulse btn-sm" href="/classes/create">Add Class</a></li>
         <li class="nav-item" sec:authorize="isAnonymous()"><a class="nav-link" href="/login">Login</a></li>
-        <li class="nav-item" sec:authorize="isAnonymous()"><a class="btn btn-pulse btn-sm" href="/register">Join</a></li>
+        <li class="nav-item" sec:authorize="isAnonymous()"><a class="btn btn-pulse btn-sm" href="/register">Create Account</a></li>
         <li class="nav-item" sec:authorize="isAuthenticated()">
           <form th:action="@{/logout}" method="post"><button class="btn btn-outline-light btn-sm">Logout</button></form>
         </li>

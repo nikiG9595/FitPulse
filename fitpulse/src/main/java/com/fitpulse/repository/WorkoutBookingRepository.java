@@ -9,9 +9,12 @@ import java.util.List;
 import java.util.UUID;
 
 public interface WorkoutBookingRepository extends JpaRepository<WorkoutBooking, UUID> {
+
     boolean existsByMemberAndGymClass(User member, GymClass gymClass);
 
     long countByGymClass(GymClass gymClass);
 
     List<WorkoutBooking> findAllByMemberOrderByBookedAtDesc(User member);
+
+    boolean existsByGymClassId(UUID gymClassId);
 }

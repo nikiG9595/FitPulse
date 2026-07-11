@@ -9,18 +9,24 @@ import java.util.UUID;
 @Entity
 @Table(name = "memberships")
 public class Membership {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true)
     private MembershipType type;
+
     @Column(nullable = false)
     private String title;
+
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
+
     @Column(nullable = false)
     private Integer durationDays;
+
     @Column(nullable = false, length = 800)
     private String description;
 

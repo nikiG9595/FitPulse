@@ -6,17 +6,22 @@ import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class MembershipRequest {
+
     @NotNull(message = "Type is required")
     private MembershipType type;
+
     @NotBlank(message = "Title is required")
     @Size(min = 3, max = 50, message = "Title must be between 3 and 50 characters")
     private String title;
+
     @NotNull(message = "Price is required")
     @DecimalMin(value = "0.00", inclusive = false, message = "Price must be positive")
     private BigDecimal price;
+
     @NotNull(message = "Duration is required")
     @Min(value = 1, message = "Duration must be at least 1 day")
     private Integer durationDays;
+
     @NotBlank(message = "Description is required")
     @Size(min = 10, max = 800, message = "Description must be between 10 and 800 characters")
     private String description;

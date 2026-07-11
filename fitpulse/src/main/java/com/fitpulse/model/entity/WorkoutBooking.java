@@ -8,13 +8,17 @@ import java.util.UUID;
 @Entity
 @Table(name = "workout_bookings", uniqueConstraints = @UniqueConstraint(columnNames = {"member_id", "gym_class_id"}))
 public class WorkoutBooking {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @ManyToOne(optional = false)
     private User member;
+
     @ManyToOne(optional = false)
     private GymClass gymClass;
+
     @Column(nullable = false)
     private LocalDateTime bookedAt;
 

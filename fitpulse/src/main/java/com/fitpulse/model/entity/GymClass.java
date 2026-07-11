@@ -9,22 +9,30 @@ import java.util.UUID;
 @Entity
 @Table(name = "gym_classes")
 public class GymClass {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @Column(nullable = false, length = 80)
     private String title;
+
     @Column(nullable = false, length = 60)
     private String trainerName;
+
     @Column(nullable = false)
     private LocalDateTime startsAt;
+
     @Column(nullable = false)
     private Integer capacity;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ClassIntensity intensity;
+
     @Column(nullable = false, length = 900)
     private String description;
+
     @ManyToOne(optional = false)
     private Membership requiredMembership;
 

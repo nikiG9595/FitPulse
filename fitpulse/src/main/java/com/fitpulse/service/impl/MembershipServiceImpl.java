@@ -15,64 +15,93 @@ import java.util.UUID;
 
 @Service
 public class MembershipServiceImpl implements MembershipService {
+
     private final MembershipRepository membershipRepository;
     private final UserRepository userRepository;
     private final UserService userService;
 
-    public MembershipServiceImpl(MembershipRepository membershipRepository, UserRepository userRepository, UserService userService) {
+    public MembershipServiceImpl(
+            MembershipRepository membershipRepository,
+            UserRepository userRepository,
+            UserService userService) {
+
         this.membershipRepository = membershipRepository;
         this.userRepository = userRepository;
         this.userService = userService;
     }
 
+    @Override
     public List<Membership> getAll() {
         return membershipRepository.findAllByOrderByPriceAsc();
     }
 
+    @Override
     public Membership getById(UUID id) {
-        return membershipRepository.findById(id).orElseThrow(() -> new FitPulseException("Membership not found"));
+        return membershipRepository.findById(id)
+                .orElseThrow(() -> new FitPulseException("Membership not found"));
     }
 
+    @Override
     public void create(MembershipRequest request) {
-        if (membershipRepository.existsByType(request.getType()))
+        if (membershipRepository.existsByType(request.getType())) {
             throw new FitPulseException("Membership type already exists");
-        Membership m = new Membership();
-        fill(m, request);
-        membershipRepository.save(m);
+        }
+
+        Membership membership = new Membership();
+        fill(membership, request);
+
+        membershipRepository.save(membership);
     }
 
+    @Override
     public void update(UUID id, MembershipRequest request) {
-        Membership m = getById(id);
-        fill(m, request);
-        membershipRepository.save(m);
+        Membership membership = getById(id);
+
+        membershipRepository.findByType(request.getType())
+                .filter(existingMembership ->
+                        !existingMembership.getId().equals(membership.getId()))
+                .ifPresent(existingMembership -> {
+                    throw new FitPulseException("Membership type already exists");
+                });
+
+        fill(membership, request);
+        membershipRepository.save(membership);
     }
 
+    @Override
     public void delete(UUID id) {
-        membershipRepository.delete(getById(id));
+        Membership membership = getById(id);
+        membershipRepository.delete(membership);
     }
 
+    @Override
     public MembershipRequest mapToRequest(UUID id) {
-        Membership m = getById(id);
-        MembershipRequest r = new MembershipRequest();
-        r.setType(m.getType());
-        r.setTitle(m.getTitle());
-        r.setPrice(m.getPrice());
-        r.setDurationDays(m.getDurationDays());
-        r.setDescription(m.getDescription());
-        return r;
+        Membership membership = getById(id);
+
+        MembershipRequest request = new MembershipRequest();
+        request.setType(membership.getType());
+        request.setTitle(membership.getTitle());
+        request.setPrice(membership.getPrice());
+        request.setDurationDays(membership.getDurationDays());
+        request.setDescription(membership.getDescription());
+
+        return request;
     }
 
+    @Override
     public void chooseMembership(UUID membershipId) {
         User user = userService.getCurrentUser();
-        user.setMembership(getById(membershipId));
+        Membership membership = getById(membershipId);
+
+        user.setMembership(membership);
         userRepository.save(user);
     }
 
-    private void fill(Membership m, MembershipRequest r) {
-        m.setType(r.getType());
-        m.setTitle(r.getTitle());
-        m.setPrice(r.getPrice());
-        m.setDurationDays(r.getDurationDays());
-        m.setDescription(r.getDescription());
+    private void fill(Membership membership, MembershipRequest request) {
+        membership.setType(request.getType());
+        membership.setTitle(request.getTitle());
+        membership.setPrice(request.getPrice());
+        membership.setDurationDays(request.getDurationDays());
+        membership.setDescription(request.getDescription());
     }
 }

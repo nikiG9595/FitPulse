@@ -13,7 +13,7 @@ Administrators (Admin) can create, edit, and delete membership plans and trainin
 
 ## Tech Stack
 
-- Java 17
+- Java 21
 - Spring Boot 3.4.0
 - Maven
 - Spring MVC
@@ -146,7 +146,7 @@ FitPulse е приложение за управление на фитнес, р
 
 ## Използвани технологии
 
-- Java 17
+- Java 21
 - Spring Boot 3.4.0
 - Maven
 - Spring MVC

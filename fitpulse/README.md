@@ -1,6 +1,12 @@
-# FitPulse
+## FitPulse
 
-FitPulse is a Spring MVC fitness management system. It is built as a complete educational project for practicing Spring Boot, MVC, Thymeleaf, JPA, validation, security and layered architecture.
+FitPulse is a Spring Boot fitness management application that allows users to register, 
+choose a membership plan, browse available training classes, book workouts, and manage their profile.
+You can start it when you run FitPulseApplication class and open `http://localhost:8080`.
+
+Administrators (Admin) can create, edit, and delete membership plans and training classes.
+
+
 
 ## Tech Stack
 
@@ -12,64 +18,110 @@ FitPulse is a Spring MVC fitness management system. It is built as a complete ed
 - Spring Security
 - Spring Data JPA
 - MySQL
-- Bean Validation
 - Bootstrap 5
+
+
 
 ## Main Features
 
-- User registration and login
-- Role-based access control: ADMIN and MEMBER
+- User registration
+- User login and logout
+- Session-based authentication
+- Role-based access control
 - Membership plan management
-- Workout class management
-- Workout booking and cancellation
-- Profile page with active membership and bookings
-- Server-side validation for all forms
-- Custom business exceptions
-- UUID primary keys for entities
+- Training class management
+- Workout booking
+- Booking cancellation
+- Membership-level access validation
+- Personalized dashboard
+- User profile
+- Server-side form validation
+- Custom exception handling
+
+
 
 ## Domain Entities
 
-- User
-- Membership
-- GymClass
-- WorkoutBooking
+The application contains the following domain entities:
 
-## Demo Accounts
+- `User`
+- `Membership`
+- `GymClass`
+- `WorkoutBooking`
+  Each entity uses a UUID as its primary key.
 
-- Admin: `admin / admin123`
-- Member: `member / member123`
 
-## Database Setup
+## User Roles
 
-The project uses MySQL.
+ ADMIN:
 
-Default configuration:
+An administrator can:
 
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/fitpulse?createDatabaseIfNotExist=true&serverTimezone=UTC
-spring.datasource.username=root
-spring.datasource.password=Root123.
-```
+- Create membership plans
+- Edit membership plans
+- Delete membership plans
+- Create training classes
+- Edit training classes
+- Delete training classes
+- Access protected administrator functionality
 
-Change the password in `src/main/resources/application.properties` if your local MySQL password is different.
+ MEMBER:
 
-## How to Run
+A member can:
 
-1. Open the project in IntelliJ IDEA.
-2. Make sure Project SDK is Java 17 or newer.
-3. Start MySQL locally.
-4. Run `FitPulseApplication`.
-5. Open `http://localhost:8080`.
+- Choose a membership plan
+- Browse available training classes
+- View training class details
+- Book eligible training classes
+- Cancel their own bookings
+- View their current membership
+- View their profile
 
-## Suggested Git Commit Plan
 
-- chore: initialize Spring Boot project
-- feat: add domain entities
-- feat: configure Spring Security
-- feat: implement registration and login
-- feat: implement membership management
-- feat: implement gym class management
-- feat: implement workout booking
-- fix: improve validation errors
-- refactor: clean service layer
-- docs: add project README
+## Business Rules
+
+The application enforces the following business rules:
+
+- A user must choose a membership before booking a class.
+- The user's membership level must meet the requirement of the selected class.
+- A user cannot book the same class more than once.
+- A class cannot exceed its maximum capacity.
+- A user can cancel only their own bookings.
+- Membership types must be unique.
+- A training class with active bookings cannot be deleted.
+
+
+## Security
+
+The application uses Spring Security.
+
+- Guests can access the home page, login page, and registration page.
+- Logged-in users can access the protected application pages.
+- Only administrators can create, edit, or delete membership plans and training classes.
+- Passwords are stored using BCrypt hashing.
+
+
+## Validation and Error Handling
+
+All forms include server-side validation.
+
+Examples of validation include:
+
+- Required fields
+- Username length
+- Valid email format
+- Password length
+- Positive membership prices
+- Valid class capacity
+- Future training dates
+
+Business rule violations throw a custom `FitPulseException`.
+
+Validation errors are displayed next to the corresponding form fields.
+
+
+## Database
+
+The application uses MySQL and Spring Data JPA.
+
+

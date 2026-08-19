@@ -1,0 +1,9 @@
+com\fitpulse\model\dto\progress\ProgressCreateRequest.class
+com\fitpulse\exception\ProgressServiceException.class
+com\fitpulse\model\dto\progress\ProgressFormRequest.class
+com\fitpulse\service\ProgressService.class
+com\fitpulse\controller\ProgressController.class
+com\fitpulse\client\ProgressClient.class
+com\fitpulse\service\impl\ProgressServiceImpl.class
+com\fitpulse\model\dto\progress\ProgressResponse.class
+com\fitpulse\model\dto\progress\ProgressUpdateRequest.class

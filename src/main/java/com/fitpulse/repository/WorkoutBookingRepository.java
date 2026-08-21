@@ -5,6 +5,7 @@ import com.fitpulse.model.entity.User;
 import com.fitpulse.model.entity.WorkoutBooking;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,6 +16,8 @@ public interface WorkoutBookingRepository extends JpaRepository<WorkoutBooking, 
     long countByGymClass(GymClass gymClass);
 
     List<WorkoutBooking> findAllByMemberOrderByBookedAtDesc(User member);
+
+    List<WorkoutBooking> findAllByGymClassStartsAtBefore(LocalDateTime cutoff);
 
     boolean existsByGymClassId(UUID gymClassId);
 }

@@ -1,4 +1,5 @@
 com\fitpulse\model\dto\progress\ProgressCreateRequest.class
+com\fitpulse\service\impl\SchedulingServiceImpl.class
 com\fitpulse\exception\ProgressServiceException.class
 com\fitpulse\model\dto\progress\ProgressFormRequest.class
 com\fitpulse\service\ProgressService.class
@@ -7,3 +8,6 @@ com\fitpulse\client\ProgressClient.class
 com\fitpulse\service\impl\ProgressServiceImpl.class
 com\fitpulse\model\dto\progress\ProgressResponse.class
 com\fitpulse\model\dto\progress\ProgressUpdateRequest.class
+com\fitpulse\service\SchedulingService.class
+com\fitpulse\model\dto\MembershipView.class
+com\fitpulse\scheduling\FitPulseScheduler.class

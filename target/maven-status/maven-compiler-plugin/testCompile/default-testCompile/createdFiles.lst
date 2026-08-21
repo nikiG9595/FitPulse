@@ -1,2 +1,11 @@
 com\fitpulse\controller\ProgressControllerSecurityTest.class
 com\fitpulse\service\impl\ProgressServiceImplTest.class
+com\fitpulse\service\impl\UserServiceImplRoleManagementTest.class
+com\fitpulse\service\impl\SchedulingServiceImplTest.class
+com\fitpulse\service\impl\MembershipServiceCachingTest$TestConfig.class
+com\fitpulse\controller\GlobalExceptionHandlerTest$ExceptionTestController.class
+com\fitpulse\controller\ProfileControllerSecurityTest.class
+com\fitpulse\service\impl\UserServiceImplProfileUpdateTest.class
+com\fitpulse\controller\AdminUserControllerSecurityTest.class
+com\fitpulse\controller\GlobalExceptionHandlerTest.class
+com\fitpulse\service\impl\MembershipServiceCachingTest.class

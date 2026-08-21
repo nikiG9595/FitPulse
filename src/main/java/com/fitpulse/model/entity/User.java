@@ -2,6 +2,10 @@ package com.fitpulse.model.entity;
 
 import com.fitpulse.model.enums.UserRole;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.UUID;
 
@@ -14,16 +18,22 @@ public class User {
     private UUID id;
 
     @Column(nullable = false, unique = true, length = 30)
+    @NotBlank
+    @Size(min = 3, max = 30)
     private String username;
 
     @Column(nullable = false, unique = true)
+    @NotBlank
+    @Email
     private String email;
 
     @Column(nullable = false)
+    @NotBlank
     private String password;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @NotNull
     private UserRole role;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -1,6 +1,8 @@
 package com.fitpulse.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -14,12 +16,16 @@ public class WorkoutBooking {
     private UUID id;
 
     @ManyToOne(optional = false)
+    @NotNull
     private User member;
 
     @ManyToOne(optional = false)
+    @NotNull
     private GymClass gymClass;
 
     @Column(nullable = false)
+    @NotNull
+    @PastOrPresent
     private LocalDateTime bookedAt;
 
     public UUID getId() {

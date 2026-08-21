@@ -64,7 +64,8 @@ public class MembershipServiceImpl implements MembershipService {
         fill(membership, request);
 
         membershipRepository.save(membership);
-        LOGGER.info("Membership created; membership list cache invalidated");
+        LOGGER.info("Membership created: membershipId={}; membership list cache invalidated",
+                membership.getId());
     }
 
     @Override
@@ -113,6 +114,8 @@ public class MembershipServiceImpl implements MembershipService {
 
         user.setMembership(membership);
         userRepository.save(user);
+        LOGGER.info("Membership selected: userId={}, membershipId={}",
+                user.getId(), membershipId);
     }
 
     private void fill(Membership membership, MembershipRequest request) {

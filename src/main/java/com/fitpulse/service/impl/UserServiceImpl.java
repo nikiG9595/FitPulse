@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(UserRole.MEMBER);
         userRepository.save(user);
+        LOGGER.info("User registered: userId={}", user.getId());
     }
 
     @Override
@@ -73,8 +74,8 @@ public class UserServiceImpl implements UserService {
 
         user.setRole(newRole);
         userRepository.save(user);
-        LOGGER.info("User role changed: userId={}, username={}, previousRole={}, newRole={}, changedBy={}",
-                user.getId(), user.getUsername(), previousRole, newRole, currentUser.getUsername());
+        LOGGER.info("User role changed: userId={}, previousRole={}, newRole={}, changedByUserId={}",
+                user.getId(), previousRole, newRole, currentUser.getId());
     }
 
     @Override
@@ -96,13 +97,11 @@ public class UserServiceImpl implements UserService {
         if (userRepository.existsByEmailAndIdNot(request.getEmail(), currentUser.getId()))
             throw new FitPulseException("Email already exists");
 
-        String previousUsername = currentUser.getUsername();
         currentUser.setUsername(request.getUsername());
         currentUser.setEmail(request.getEmail());
         userRepository.save(currentUser);
         refreshAuthenticationUsername(request.getUsername());
-        LOGGER.info("User profile updated: userId={}, previousUsername={}, newUsername={}",
-                currentUser.getId(), previousUsername, request.getUsername());
+        LOGGER.info("User profile updated: userId={}", currentUser.getId());
     }
 
     private void refreshAuthenticationUsername(String username) {

@@ -8,6 +8,8 @@ import com.fitpulse.repository.WorkoutBookingRepository;
 import com.fitpulse.service.GymClassService;
 import com.fitpulse.service.UserService;
 import com.fitpulse.service.WorkoutBookingService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,6 +18,8 @@ import java.util.UUID;
 
 @Service
 public class WorkoutBookingServiceImpl implements WorkoutBookingService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(WorkoutBookingServiceImpl.class);
 
     private final WorkoutBookingRepository bookingRepository;
     private final UserService userService;
@@ -70,6 +74,8 @@ public class WorkoutBookingServiceImpl implements WorkoutBookingService {
         booking.setBookedAt(LocalDateTime.now());
 
         bookingRepository.save(booking);
+        LOGGER.info("Workout booking created: bookingId={}, userId={}, classId={}",
+                booking.getId(), user.getId(), classId);
     }
 
     @Override
@@ -88,6 +94,8 @@ public class WorkoutBookingServiceImpl implements WorkoutBookingService {
         }
 
         bookingRepository.delete(booking);
+        LOGGER.info("Workout booking cancelled: bookingId={}, userId={}",
+                bookingId, user.getId());
     }
 
     @Override

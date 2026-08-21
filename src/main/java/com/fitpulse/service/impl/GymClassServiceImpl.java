@@ -7,6 +7,8 @@ import com.fitpulse.repository.GymClassRepository;
 import com.fitpulse.repository.WorkoutBookingRepository;
 import com.fitpulse.service.GymClassService;
 import com.fitpulse.service.MembershipService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,8 @@ import java.util.UUID;
 
 @Service
 public class GymClassServiceImpl implements GymClassService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(GymClassServiceImpl.class);
 
     private final GymClassRepository gymClassRepository;
     private final MembershipService membershipService;
@@ -46,6 +50,7 @@ public class GymClassServiceImpl implements GymClassService {
 
         fill(gymClass, request);
         gymClassRepository.save(gymClass);
+        LOGGER.info("Gym class created: classId={}", gymClass.getId());
     }
 
     @Override
@@ -54,6 +59,7 @@ public class GymClassServiceImpl implements GymClassService {
 
         fill(gymClass, request);
         gymClassRepository.save(gymClass);
+        LOGGER.info("Gym class updated: classId={}", id);
     }
 
     @Override
@@ -67,6 +73,7 @@ public class GymClassServiceImpl implements GymClassService {
         }
 
         gymClassRepository.delete(gymClass);
+        LOGGER.info("Gym class deleted: classId={}", id);
     }
 
     @Override

@@ -7,8 +7,10 @@ com\fitpulse\controller\AdminUserControllerSecurityTest.class
 com\fitpulse\service\impl\MembershipServiceCachingTest.class
 com\fitpulse\service\impl\GymClassServiceImplTest.class
 com\fitpulse\controller\ProgressControllerSecurityTest.class
+com\fitpulse\integration\MainApplicationBookingIntegrationTest.class
 com\fitpulse\service\impl\ProgressServiceImplTest.class
 com\fitpulse\service\impl\UserServiceImplRoleManagementTest.class
+com\fitpulse\model\entity\EntityValidationTest.class
 com\fitpulse\service\impl\MembershipServiceCachingTest$TestConfig.class
 com\fitpulse\controller\CoreWorkflowControllerTest.class
 com\fitpulse\controller\ProfileControllerSecurityTest.class

@@ -2,98 +2,117 @@
 
 import com.fitpulse.model.enums.ClassIntensity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name = &quot;gym_classes&quot;)
-<span class="fc" id="L11">public class GymClass {</span>
+<span class="fc" id="L17">public class GymClass {</span>
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false, length = 80)
+    @NotBlank
+    @Size(min = 3, max = 80)
     private String title;
 
     @Column(nullable = false, length = 60)
+    @NotBlank
+    @Size(min = 3, max = 60)
     private String trainerName;
 
     @Column(nullable = false)
+    @NotNull
+    @Future
     private LocalDateTime startsAt;
 
     @Column(nullable = false)
+    @NotNull
+    @Min(1)
+    @Max(100)
     private Integer capacity;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @NotNull
     private ClassIntensity intensity;
 
     @Column(nullable = false, length = 900)
+    @NotBlank
+    @Size(min = 10, max = 900)
     private String description;
 
     @ManyToOne(optional = false)
+    @NotNull
     private Membership requiredMembership;
 
     public UUID getId() {
-<span class="fc" id="L40">        return id;</span>
+<span class="fc" id="L59">        return id;</span>
     }
 
     public String getTitle() {
-<span class="fc" id="L44">        return title;</span>
+<span class="fc" id="L63">        return title;</span>
     }
 
     public void setTitle(String title) {
-<span class="fc" id="L48">        this.title = title;</span>
-<span class="fc" id="L49">    }</span>
+<span class="fc" id="L67">        this.title = title;</span>
+<span class="fc" id="L68">    }</span>
 
     public String getTrainerName() {
-<span class="fc" id="L52">        return trainerName;</span>
+<span class="fc" id="L71">        return trainerName;</span>
     }
 
     public void setTrainerName(String trainerName) {
-<span class="fc" id="L56">        this.trainerName = trainerName;</span>
-<span class="fc" id="L57">    }</span>
+<span class="fc" id="L75">        this.trainerName = trainerName;</span>
+<span class="fc" id="L76">    }</span>
 
     public LocalDateTime getStartsAt() {
-<span class="fc" id="L60">        return startsAt;</span>
+<span class="fc" id="L79">        return startsAt;</span>
     }
 
     public void setStartsAt(LocalDateTime startsAt) {
-<span class="fc" id="L64">        this.startsAt = startsAt;</span>
-<span class="fc" id="L65">    }</span>
+<span class="fc" id="L83">        this.startsAt = startsAt;</span>
+<span class="fc" id="L84">    }</span>
 
     public Integer getCapacity() {
-<span class="fc" id="L68">        return capacity;</span>
+<span class="fc" id="L87">        return capacity;</span>
     }
 
     public void setCapacity(Integer capacity) {
-<span class="fc" id="L72">        this.capacity = capacity;</span>
-<span class="fc" id="L73">    }</span>
+<span class="fc" id="L91">        this.capacity = capacity;</span>
+<span class="fc" id="L92">    }</span>
 
     public ClassIntensity getIntensity() {
-<span class="fc" id="L76">        return intensity;</span>
+<span class="fc" id="L95">        return intensity;</span>
     }
 
     public void setIntensity(ClassIntensity intensity) {
-<span class="fc" id="L80">        this.intensity = intensity;</span>
-<span class="fc" id="L81">    }</span>
+<span class="fc" id="L99">        this.intensity = intensity;</span>
+<span class="fc" id="L100">    }</span>
 
     public String getDescription() {
-<span class="fc" id="L84">        return description;</span>
+<span class="fc" id="L103">        return description;</span>
     }
 
     public void setDescription(String description) {
-<span class="fc" id="L88">        this.description = description;</span>
-<span class="fc" id="L89">    }</span>
+<span class="fc" id="L107">        this.description = description;</span>
+<span class="fc" id="L108">    }</span>
 
     public Membership getRequiredMembership() {
-<span class="fc" id="L92">        return requiredMembership;</span>
+<span class="fc" id="L111">        return requiredMembership;</span>
     }
 
     public void setRequiredMembership(Membership requiredMembership) {
-<span class="fc" id="L96">        this.requiredMembership = requiredMembership;</span>
-<span class="fc" id="L97">    }</span>
+<span class="fc" id="L115">        this.requiredMembership = requiredMembership;</span>
+<span class="fc" id="L116">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

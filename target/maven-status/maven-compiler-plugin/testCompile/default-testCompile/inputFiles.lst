@@ -3,6 +3,8 @@ C:\Users\LCUser\Desktop\fitpulse-final\src\test\java\com\fitpulse\controller\Cor
 C:\Users\LCUser\Desktop\fitpulse-final\src\test\java\com\fitpulse\controller\GlobalExceptionHandlerTest.java
 C:\Users\LCUser\Desktop\fitpulse-final\src\test\java\com\fitpulse\controller\ProfileControllerSecurityTest.java
 C:\Users\LCUser\Desktop\fitpulse-final\src\test\java\com\fitpulse\controller\ProgressControllerSecurityTest.java
+C:\Users\LCUser\Desktop\fitpulse-final\src\test\java\com\fitpulse\integration\MainApplicationBookingIntegrationTest.java
+C:\Users\LCUser\Desktop\fitpulse-final\src\test\java\com\fitpulse\model\entity\EntityValidationTest.java
 C:\Users\LCUser\Desktop\fitpulse-final\src\test\java\com\fitpulse\scheduling\FitPulseSchedulerTest.java
 C:\Users\LCUser\Desktop\fitpulse-final\src\test\java\com\fitpulse\service\impl\GymClassServiceImplTest.java
 C:\Users\LCUser\Desktop\fitpulse-final\src\test\java\com\fitpulse\service\impl\MembershipServiceCachingTest.java

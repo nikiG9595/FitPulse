@@ -1,13 +1,14 @@
 package com.fitpulse.service;
 
 import com.fitpulse.model.dto.MembershipRequest;
+import com.fitpulse.model.dto.MembershipView;
 import com.fitpulse.model.entity.Membership;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface MembershipService {
-    List<Membership> getAll();
+    List<MembershipView> getAll();
 
     Membership getById(UUID id);
 

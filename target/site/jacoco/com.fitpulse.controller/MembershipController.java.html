@@ -16,9 +16,9 @@ import java.util.UUID;
 public class MembershipController {
     private final MembershipService membershipService;
 
-<span class="nc" id="L19">    public MembershipController(MembershipService membershipService) {</span>
-<span class="nc" id="L20">        this.membershipService = membershipService;</span>
-<span class="nc" id="L21">    }</span>
+<span class="fc" id="L19">    public MembershipController(MembershipService membershipService) {</span>
+<span class="fc" id="L20">        this.membershipService = membershipService;</span>
+<span class="fc" id="L21">    }</span>
 
     @GetMapping
     public String all(Model model) {
@@ -28,8 +28,8 @@ public class MembershipController {
 
     @PostMapping(&quot;/{id}/choose&quot;)
     public String choose(@PathVariable UUID id) {
-<span class="nc" id="L31">        membershipService.chooseMembership(id);</span>
-<span class="nc" id="L32">        return &quot;redirect:/profile&quot;;</span>
+<span class="fc" id="L31">        membershipService.chooseMembership(id);</span>
+<span class="fc" id="L32">        return &quot;redirect:/profile&quot;;</span>
     }
 
     @GetMapping(&quot;/create&quot;)
@@ -40,12 +40,12 @@ public class MembershipController {
 
     @PostMapping(&quot;/create&quot;)
     public String doCreate(@Valid @ModelAttribute MembershipRequest membershipRequest, BindingResult bindingResult, Model model) {
-<span class="nc bnc" id="L43" title="All 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
-<span class="nc" id="L44">            prepare(model, membershipRequest);</span>
-<span class="nc" id="L45">            return &quot;memberships/form&quot;;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
+<span class="fc" id="L44">            prepare(model, membershipRequest);</span>
+<span class="fc" id="L45">            return &quot;memberships/form&quot;;</span>
         }
-<span class="nc" id="L47">        membershipService.create(membershipRequest);</span>
-<span class="nc" id="L48">        return &quot;redirect:/memberships&quot;;</span>
+<span class="fc" id="L47">        membershipService.create(membershipRequest);</span>
+<span class="fc" id="L48">        return &quot;redirect:/memberships&quot;;</span>
     }
 
     @GetMapping(&quot;/{id}/edit&quot;)
@@ -68,13 +68,13 @@ public class MembershipController {
 
     @PostMapping(&quot;/{id}/delete&quot;)
     public String delete(@PathVariable UUID id) {
-<span class="nc" id="L71">        membershipService.delete(id);</span>
-<span class="nc" id="L72">        return &quot;redirect:/memberships&quot;;</span>
+<span class="fc" id="L71">        membershipService.delete(id);</span>
+<span class="fc" id="L72">        return &quot;redirect:/memberships&quot;;</span>
     }
 
     private void prepare(Model model, MembershipRequest request) {
-<span class="nc" id="L76">        model.addAttribute(&quot;membershipRequest&quot;, request);</span>
-<span class="nc" id="L77">        model.addAttribute(&quot;types&quot;, MembershipType.values());</span>
-<span class="nc" id="L78">    }</span>
+<span class="fc" id="L76">        model.addAttribute(&quot;membershipRequest&quot;, request);</span>
+<span class="fc" id="L77">        model.addAttribute(&quot;types&quot;, MembershipType.values());</span>
+<span class="fc" id="L78">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

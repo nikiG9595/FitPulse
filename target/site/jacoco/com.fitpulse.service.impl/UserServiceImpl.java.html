@@ -32,19 +32,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(RegisterRequest request) {
-<span class="nc bnc" id="L35" title="All 2 branches missed.">        if (!request.getPassword().equals(request.getConfirmPassword()))</span>
-<span class="nc" id="L36">            throw new FitPulseException(&quot;Passwords do not match&quot;);</span>
-<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (userRepository.existsByUsername(request.getUsername()))</span>
-<span class="nc" id="L38">            throw new FitPulseException(&quot;Username already exists&quot;);</span>
-<span class="nc bnc" id="L39" title="All 2 branches missed.">        if (userRepository.existsByEmail(request.getEmail())) throw new FitPulseException(&quot;Email already exists&quot;);</span>
-<span class="nc" id="L40">        User user = new User();</span>
-<span class="nc" id="L41">        user.setUsername(request.getUsername());</span>
-<span class="nc" id="L42">        user.setEmail(request.getEmail());</span>
-<span class="nc" id="L43">        user.setPassword(passwordEncoder.encode(request.getPassword()));</span>
-<span class="nc" id="L44">        user.setRole(UserRole.MEMBER);</span>
-<span class="nc" id="L45">        userRepository.save(user);</span>
-<span class="nc" id="L46">        LOGGER.info(&quot;User registered: userId={}&quot;, user.getId());</span>
-<span class="nc" id="L47">    }</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (!request.getPassword().equals(request.getConfirmPassword()))</span>
+<span class="fc" id="L36">            throw new FitPulseException(&quot;Passwords do not match&quot;);</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (userRepository.existsByUsername(request.getUsername()))</span>
+<span class="fc" id="L38">            throw new FitPulseException(&quot;Username already exists&quot;);</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (userRepository.existsByEmail(request.getEmail())) throw new FitPulseException(&quot;Email already exists&quot;);</span>
+<span class="fc" id="L40">        User user = new User();</span>
+<span class="fc" id="L41">        user.setUsername(request.getUsername());</span>
+<span class="fc" id="L42">        user.setEmail(request.getEmail());</span>
+<span class="fc" id="L43">        user.setPassword(passwordEncoder.encode(request.getPassword()));</span>
+<span class="fc" id="L44">        user.setRole(UserRole.MEMBER);</span>
+<span class="fc" id="L45">        userRepository.save(user);</span>
+<span class="fc" id="L46">        LOGGER.info(&quot;User registered: userId={}&quot;, user.getId());</span>
+<span class="fc" id="L47">    }</span>
 
     @Override
     public User getCurrentUser() {
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List&lt;User&gt; getAllUsers() {
-<span class="nc" id="L57">        return userRepository.findAll();</span>
+<span class="fc" id="L57">        return userRepository.findAll();</span>
     }
 
     @Override

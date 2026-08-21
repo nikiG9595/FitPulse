@@ -14,18 +14,18 @@ public class HomeController {
     private final MembershipService membershipService;
     private final UserService userService;
 
-<span class="nc" id="L17">    public HomeController(GymClassService gymClassService, MembershipService membershipService, UserService userService) {</span>
-<span class="nc" id="L18">        this.gymClassService = gymClassService;</span>
-<span class="nc" id="L19">        this.membershipService = membershipService;</span>
-<span class="nc" id="L20">        this.userService = userService;</span>
-<span class="nc" id="L21">    }</span>
+<span class="fc" id="L17">    public HomeController(GymClassService gymClassService, MembershipService membershipService, UserService userService) {</span>
+<span class="fc" id="L18">        this.gymClassService = gymClassService;</span>
+<span class="fc" id="L19">        this.membershipService = membershipService;</span>
+<span class="fc" id="L20">        this.userService = userService;</span>
+<span class="fc" id="L21">    }</span>
 
     @GetMapping(&quot;/&quot;)
     public String home(Model model) {
-<span class="nc" id="L25">        model.addAttribute(&quot;classes&quot;, gymClassService.getAll());</span>
-<span class="nc" id="L26">        model.addAttribute(&quot;memberships&quot;, membershipService.getAll());</span>
+<span class="fc" id="L25">        model.addAttribute(&quot;classes&quot;, gymClassService.getAll());</span>
+<span class="fc" id="L26">        model.addAttribute(&quot;memberships&quot;, membershipService.getAll());</span>
 
-<span class="nc" id="L28">        return &quot;home&quot;;</span>
+<span class="fc" id="L28">        return &quot;home&quot;;</span>
     }
 
     @GetMapping(&quot;/dashboard&quot;)

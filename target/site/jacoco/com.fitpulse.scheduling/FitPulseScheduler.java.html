@@ -9,28 +9,28 @@ import org.springframework.stereotype.Component;
 @Component
 public class FitPulseScheduler {
 
-<span class="nc" id="L12">    private static final Logger LOGGER = LoggerFactory.getLogger(FitPulseScheduler.class);</span>
+<span class="fc" id="L12">    private static final Logger LOGGER = LoggerFactory.getLogger(FitPulseScheduler.class);</span>
 
     private final SchedulingService schedulingService;
 
-<span class="nc" id="L16">    public FitPulseScheduler(SchedulingService schedulingService) {</span>
-<span class="nc" id="L17">        this.schedulingService = schedulingService;</span>
-<span class="nc" id="L18">    }</span>
+<span class="fc" id="L16">    public FitPulseScheduler(SchedulingService schedulingService) {</span>
+<span class="fc" id="L17">        this.schedulingService = schedulingService;</span>
+<span class="fc" id="L18">    }</span>
 
     @Scheduled(cron = &quot;${fitpulse.scheduling.expired-bookings-cron}&quot;)
     public void removeExpiredBookings() {
-<span class="nc" id="L22">        LOGGER.info(&quot;Starting scheduled expired-booking cleanup&quot;);</span>
-<span class="nc" id="L23">        int removedBookings = schedulingService.removeExpiredBookings();</span>
-<span class="nc" id="L24">        LOGGER.info(&quot;Finished expired-booking cleanup; removed {} bookings&quot;,</span>
-<span class="nc" id="L25">                removedBookings);</span>
-<span class="nc" id="L26">    }</span>
+<span class="fc" id="L22">        LOGGER.info(&quot;Starting scheduled expired-booking cleanup&quot;);</span>
+<span class="fc" id="L23">        int removedBookings = schedulingService.removeExpiredBookings();</span>
+<span class="fc" id="L24">        LOGGER.info(&quot;Finished expired-booking cleanup; removed {} bookings&quot;,</span>
+<span class="fc" id="L25">                removedBookings);</span>
+<span class="fc" id="L26">    }</span>
 
     @Scheduled(fixedDelayString = &quot;${fitpulse.scheduling.past-classes-delay-ms}&quot;)
     public void removePastClassesWithoutBookings() {
-<span class="nc" id="L30">        LOGGER.info(&quot;Starting scheduled past-class cleanup&quot;);</span>
-<span class="nc" id="L31">        int removedClasses = schedulingService.removePastClassesWithoutBookings();</span>
-<span class="nc" id="L32">        LOGGER.info(&quot;Finished past-class cleanup; removed {} gym classes&quot;,</span>
-<span class="nc" id="L33">                removedClasses);</span>
-<span class="nc" id="L34">    }</span>
+<span class="fc" id="L30">        LOGGER.info(&quot;Starting scheduled past-class cleanup&quot;);</span>
+<span class="fc" id="L31">        int removedClasses = schedulingService.removePastClassesWithoutBookings();</span>
+<span class="fc" id="L32">        LOGGER.info(&quot;Finished past-class cleanup; removed {} gym classes&quot;,</span>
+<span class="fc" id="L33">                removedClasses);</span>
+<span class="fc" id="L34">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

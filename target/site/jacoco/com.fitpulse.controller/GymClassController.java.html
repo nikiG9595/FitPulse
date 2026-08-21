@@ -22,11 +22,11 @@ public class GymClassController {
     private final MembershipService membershipService;
     private final WorkoutBookingService bookingService;
 
-<span class="nc" id="L25">    public GymClassController(GymClassService gymClassService, MembershipService membershipService, WorkoutBookingService bookingService) {</span>
-<span class="nc" id="L26">        this.gymClassService = gymClassService;</span>
-<span class="nc" id="L27">        this.membershipService = membershipService;</span>
-<span class="nc" id="L28">        this.bookingService = bookingService;</span>
-<span class="nc" id="L29">    }</span>
+<span class="fc" id="L25">    public GymClassController(GymClassService gymClassService, MembershipService membershipService, WorkoutBookingService bookingService) {</span>
+<span class="fc" id="L26">        this.gymClassService = gymClassService;</span>
+<span class="fc" id="L27">        this.membershipService = membershipService;</span>
+<span class="fc" id="L28">        this.bookingService = bookingService;</span>
+<span class="fc" id="L29">    }</span>
 
     @GetMapping
     public String all(Model model) {
@@ -44,18 +44,18 @@ public class GymClassController {
 
     @GetMapping(&quot;/create&quot;)
     public String create(Model model) {
-<span class="nc" id="L47">        prepareForm(model, new GymClassRequest());</span>
-<span class="nc" id="L48">        return &quot;classes/form&quot;;</span>
+<span class="fc" id="L47">        prepareForm(model, new GymClassRequest());</span>
+<span class="fc" id="L48">        return &quot;classes/form&quot;;</span>
     }
 
     @PostMapping(&quot;/create&quot;)
     public String doCreate(@Valid @ModelAttribute GymClassRequest gymClassRequest, BindingResult bindingResult, Model model) {
-<span class="nc bnc" id="L53" title="All 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
-<span class="nc" id="L54">            prepareForm(model, gymClassRequest);</span>
-<span class="nc" id="L55">            return &quot;classes/form&quot;;</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
+<span class="fc" id="L54">            prepareForm(model, gymClassRequest);</span>
+<span class="fc" id="L55">            return &quot;classes/form&quot;;</span>
         }
-<span class="nc" id="L57">        gymClassService.create(gymClassRequest);</span>
-<span class="nc" id="L58">        return &quot;redirect:/classes&quot;;</span>
+<span class="fc" id="L57">        gymClassService.create(gymClassRequest);</span>
+<span class="fc" id="L58">        return &quot;redirect:/classes&quot;;</span>
     }
 
     @GetMapping(&quot;/{id}/edit&quot;)
@@ -87,16 +87,16 @@ public class GymClassController {
         try {
 <span class="nc" id="L88">            bookingService.book(id);</span>
 <span class="nc" id="L89">            redirectAttributes.addFlashAttribute(&quot;success&quot;, &quot;Class booked successfully.&quot;);</span>
-<span class="nc" id="L90">        } catch (FitPulseException e) {</span>
-<span class="nc" id="L91">            redirectAttributes.addFlashAttribute(&quot;error&quot;, e.getMessage());</span>
+<span class="fc" id="L90">        } catch (FitPulseException e) {</span>
+<span class="fc" id="L91">            redirectAttributes.addFlashAttribute(&quot;error&quot;, e.getMessage());</span>
 <span class="nc" id="L92">        }</span>
-<span class="nc" id="L93">        return &quot;redirect:/classes/&quot; + id;</span>
+<span class="fc" id="L93">        return &quot;redirect:/classes/&quot; + id;</span>
     }
 
     private void prepareForm(Model model, GymClassRequest request) {
-<span class="nc" id="L97">        model.addAttribute(&quot;gymClassRequest&quot;, request);</span>
-<span class="nc" id="L98">        model.addAttribute(&quot;memberships&quot;, membershipService.getAll());</span>
-<span class="nc" id="L99">        model.addAttribute(&quot;intensities&quot;, ClassIntensity.values());</span>
-<span class="nc" id="L100">    }</span>
+<span class="fc" id="L97">        model.addAttribute(&quot;gymClassRequest&quot;, request);</span>
+<span class="fc" id="L98">        model.addAttribute(&quot;memberships&quot;, membershipService.getAll());</span>
+<span class="fc" id="L99">        model.addAttribute(&quot;intensities&quot;, ClassIntensity.values());</span>
+<span class="fc" id="L100">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

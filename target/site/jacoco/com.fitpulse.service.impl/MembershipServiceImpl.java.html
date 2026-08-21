@@ -50,14 +50,14 @@ public class MembershipServiceImpl implements MembershipService {
     @Override
     public Membership getById(UUID id) {
 <span class="fc" id="L52">        return membershipRepository.findById(id)</span>
-<span class="pc" id="L53">                .orElseThrow(() -&gt; new FitPulseException(&quot;Membership not found&quot;));</span>
+<span class="fc" id="L53">                .orElseThrow(() -&gt; new FitPulseException(&quot;Membership not found&quot;));</span>
     }
 
     @Override
     @CacheEvict(value = &quot;memberships&quot;, allEntries = true)
     public void create(MembershipRequest request) {
-<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        if (membershipRepository.existsByType(request.getType())) {</span>
-<span class="nc" id="L60">            throw new FitPulseException(&quot;Membership type already exists&quot;);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (membershipRepository.existsByType(request.getType())) {</span>
+<span class="fc" id="L60">            throw new FitPulseException(&quot;Membership type already exists&quot;);</span>
         }
 
 <span class="fc" id="L63">        Membership membership = new Membership();</span>
@@ -75,9 +75,9 @@ public class MembershipServiceImpl implements MembershipService {
 
 <span class="fc" id="L76">        membershipRepository.findByType(request.getType())</span>
 <span class="fc" id="L77">                .filter(existingMembership -&gt;</span>
-<span class="nc bnc" id="L78" title="All 2 branches missed.">                        !existingMembership.getId().equals(membership.getId()))</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">                        !existingMembership.getId().equals(membership.getId()))</span>
 <span class="fc" id="L79">                .ifPresent(existingMembership -&gt; {</span>
-<span class="nc" id="L80">                    throw new FitPulseException(&quot;Membership type already exists&quot;);</span>
+<span class="fc" id="L80">                    throw new FitPulseException(&quot;Membership type already exists&quot;);</span>
                 });
 
 <span class="fc" id="L83">        fill(membership, request);</span>
@@ -95,28 +95,28 @@ public class MembershipServiceImpl implements MembershipService {
 
     @Override
     public MembershipRequest mapToRequest(UUID id) {
-<span class="nc" id="L98">        Membership membership = getById(id);</span>
+<span class="fc" id="L98">        Membership membership = getById(id);</span>
 
-<span class="nc" id="L100">        MembershipRequest request = new MembershipRequest();</span>
-<span class="nc" id="L101">        request.setType(membership.getType());</span>
-<span class="nc" id="L102">        request.setTitle(membership.getTitle());</span>
-<span class="nc" id="L103">        request.setPrice(membership.getPrice());</span>
-<span class="nc" id="L104">        request.setDurationDays(membership.getDurationDays());</span>
-<span class="nc" id="L105">        request.setDescription(membership.getDescription());</span>
+<span class="fc" id="L100">        MembershipRequest request = new MembershipRequest();</span>
+<span class="fc" id="L101">        request.setType(membership.getType());</span>
+<span class="fc" id="L102">        request.setTitle(membership.getTitle());</span>
+<span class="fc" id="L103">        request.setPrice(membership.getPrice());</span>
+<span class="fc" id="L104">        request.setDurationDays(membership.getDurationDays());</span>
+<span class="fc" id="L105">        request.setDescription(membership.getDescription());</span>
 
-<span class="nc" id="L107">        return request;</span>
+<span class="fc" id="L107">        return request;</span>
     }
 
     @Override
     public void chooseMembership(UUID membershipId) {
-<span class="nc" id="L112">        User user = userService.getCurrentUser();</span>
-<span class="nc" id="L113">        Membership membership = getById(membershipId);</span>
+<span class="fc" id="L112">        User user = userService.getCurrentUser();</span>
+<span class="fc" id="L113">        Membership membership = getById(membershipId);</span>
 
-<span class="nc" id="L115">        user.setMembership(membership);</span>
-<span class="nc" id="L116">        userRepository.save(user);</span>
-<span class="nc" id="L117">        LOGGER.info(&quot;Membership selected: userId={}, membershipId={}&quot;,</span>
-<span class="nc" id="L118">                user.getId(), membershipId);</span>
-<span class="nc" id="L119">    }</span>
+<span class="fc" id="L115">        user.setMembership(membership);</span>
+<span class="fc" id="L116">        userRepository.save(user);</span>
+<span class="fc" id="L117">        LOGGER.info(&quot;Membership selected: userId={}, membershipId={}&quot;,</span>
+<span class="fc" id="L118">                user.getId(), membershipId);</span>
+<span class="fc" id="L119">    }</span>
 
     private void fill(Membership membership, MembershipRequest request) {
 <span class="fc" id="L122">        membership.setType(request.getType());</span>

@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = &quot;gym_classes&quot;)
-<span class="nc" id="L11">public class GymClass {</span>
+<span class="fc" id="L11">public class GymClass {</span>
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -37,63 +37,63 @@ import java.util.UUID;
     private Membership requiredMembership;
 
     public UUID getId() {
-<span class="nc" id="L40">        return id;</span>
+<span class="fc" id="L40">        return id;</span>
     }
 
     public String getTitle() {
-<span class="nc" id="L44">        return title;</span>
+<span class="fc" id="L44">        return title;</span>
     }
 
     public void setTitle(String title) {
-<span class="nc" id="L48">        this.title = title;</span>
-<span class="nc" id="L49">    }</span>
+<span class="fc" id="L48">        this.title = title;</span>
+<span class="fc" id="L49">    }</span>
 
     public String getTrainerName() {
-<span class="nc" id="L52">        return trainerName;</span>
+<span class="fc" id="L52">        return trainerName;</span>
     }
 
     public void setTrainerName(String trainerName) {
-<span class="nc" id="L56">        this.trainerName = trainerName;</span>
-<span class="nc" id="L57">    }</span>
+<span class="fc" id="L56">        this.trainerName = trainerName;</span>
+<span class="fc" id="L57">    }</span>
 
     public LocalDateTime getStartsAt() {
-<span class="nc" id="L60">        return startsAt;</span>
+<span class="fc" id="L60">        return startsAt;</span>
     }
 
     public void setStartsAt(LocalDateTime startsAt) {
-<span class="nc" id="L64">        this.startsAt = startsAt;</span>
-<span class="nc" id="L65">    }</span>
+<span class="fc" id="L64">        this.startsAt = startsAt;</span>
+<span class="fc" id="L65">    }</span>
 
     public Integer getCapacity() {
-<span class="nc" id="L68">        return capacity;</span>
+<span class="fc" id="L68">        return capacity;</span>
     }
 
     public void setCapacity(Integer capacity) {
-<span class="nc" id="L72">        this.capacity = capacity;</span>
-<span class="nc" id="L73">    }</span>
+<span class="fc" id="L72">        this.capacity = capacity;</span>
+<span class="fc" id="L73">    }</span>
 
     public ClassIntensity getIntensity() {
-<span class="nc" id="L76">        return intensity;</span>
+<span class="fc" id="L76">        return intensity;</span>
     }
 
     public void setIntensity(ClassIntensity intensity) {
-<span class="nc" id="L80">        this.intensity = intensity;</span>
-<span class="nc" id="L81">    }</span>
+<span class="fc" id="L80">        this.intensity = intensity;</span>
+<span class="fc" id="L81">    }</span>
 
     public String getDescription() {
-<span class="nc" id="L84">        return description;</span>
+<span class="fc" id="L84">        return description;</span>
     }
 
     public void setDescription(String description) {
-<span class="nc" id="L88">        this.description = description;</span>
-<span class="nc" id="L89">    }</span>
+<span class="fc" id="L88">        this.description = description;</span>
+<span class="fc" id="L89">    }</span>
 
     public Membership getRequiredMembership() {
-<span class="nc" id="L92">        return requiredMembership;</span>
+<span class="fc" id="L92">        return requiredMembership;</span>
     }
 
     public void setRequiredMembership(Membership requiredMembership) {
-<span class="nc" id="L96">        this.requiredMembership = requiredMembership;</span>
-<span class="nc" id="L97">    }</span>
+<span class="fc" id="L96">        this.requiredMembership = requiredMembership;</span>
+<span class="fc" id="L97">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -13,30 +13,30 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     private final UserService userService;
 
-<span class="nc" id="L16">    public AuthController(UserService userService) {</span>
-<span class="nc" id="L17">        this.userService = userService;</span>
-<span class="nc" id="L18">    }</span>
+<span class="fc" id="L16">    public AuthController(UserService userService) {</span>
+<span class="fc" id="L17">        this.userService = userService;</span>
+<span class="fc" id="L18">    }</span>
 
     @GetMapping(&quot;/login&quot;)
     public String login() {
-<span class="nc" id="L22">        return &quot;auth/login&quot;;</span>
+<span class="fc" id="L22">        return &quot;auth/login&quot;;</span>
     }
 
     @GetMapping(&quot;/register&quot;)
     public String register(Model model) {
-<span class="nc" id="L27">        model.addAttribute(&quot;registerRequest&quot;, new RegisterRequest());</span>
-<span class="nc" id="L28">        return &quot;auth/register&quot;;</span>
+<span class="fc" id="L27">        model.addAttribute(&quot;registerRequest&quot;, new RegisterRequest());</span>
+<span class="fc" id="L28">        return &quot;auth/register&quot;;</span>
     }
 
     @PostMapping(&quot;/register&quot;)
     public String doRegister(@Valid @ModelAttribute RegisterRequest registerRequest, BindingResult bindingResult, Model model) {
-<span class="nc bnc" id="L33" title="All 2 branches missed.">        if (bindingResult.hasErrors()) return &quot;auth/register&quot;;</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (bindingResult.hasErrors()) return &quot;auth/register&quot;;</span>
         try {
-<span class="nc" id="L35">            userService.register(registerRequest);</span>
-<span class="nc" id="L36">            return &quot;redirect:/login?registered&quot;;</span>
-<span class="nc" id="L37">        } catch (FitPulseException e) {</span>
-<span class="nc" id="L38">            model.addAttribute(&quot;globalError&quot;, e.getMessage());</span>
-<span class="nc" id="L39">            return &quot;auth/register&quot;;</span>
+<span class="fc" id="L35">            userService.register(registerRequest);</span>
+<span class="fc" id="L36">            return &quot;redirect:/login?registered&quot;;</span>
+<span class="fc" id="L37">        } catch (FitPulseException e) {</span>
+<span class="fc" id="L38">            model.addAttribute(&quot;globalError&quot;, e.getMessage());</span>
+<span class="fc" id="L39">            return &quot;auth/register&quot;;</span>
         }
     }
 }

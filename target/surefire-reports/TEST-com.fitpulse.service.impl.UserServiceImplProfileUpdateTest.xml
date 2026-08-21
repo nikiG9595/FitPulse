@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.fitpulse.service.impl.ProgressServiceImplTest" time="0.217" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.fitpulse.service.impl.UserServiceImplProfileUpdateTest" time="0.142" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -68,13 +68,10 @@
     <property name="java.class.version" value="65.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[FitPulse] "/>
   </properties>
-  <testcase name="updateRejectsRecordNotOwnedByAuthenticatedUser" classname="com.fitpulse.service.impl.ProgressServiceImplTest" time="0.174"/>
-  <testcase name="deleteCallsClientOnlyAfterOwnershipCheck" classname="com.fitpulse.service.impl.ProgressServiceImplTest" time="0.016">
-    <system-out><![CDATA[2026-08-21T12:06:37.050+03:00  INFO 12096 --- [FitPulse] [           main] c.f.service.impl.ProgressServiceImpl     : User f98fa46d-0bac-411f-a6ba-963d14383366 deleted progress record fc64d246-9309-408e-a2cc-6053f64a30b0
+  <testcase name="authenticatedUserCanUpdateOwnProfileWithoutChangingRole" classname="com.fitpulse.service.impl.UserServiceImplProfileUpdateTest" time="0.097">
+    <system-out><![CDATA[2026-08-21T12:06:37.845+03:00  INFO 12096 --- [FitPulse] [           main] c.fitpulse.service.impl.UserServiceImpl  : User profile updated: userId=null
 ]]></system-out>
   </testcase>
-  <testcase name="createAlwaysUsesAuthenticatedUserId" classname="com.fitpulse.service.impl.ProgressServiceImplTest" time="0.021">
-    <system-out><![CDATA[2026-08-21T12:06:37.071+03:00  INFO 12096 --- [FitPulse] [           main] c.f.service.impl.ProgressServiceImpl     : User 2b34c54c-22c1-416c-a718-4dcfe0b427a6 created progress record 95a80a84-d17c-4284-99e5-551d1edf6e19
-]]></system-out>
-  </testcase>
+  <testcase name="duplicateUsernameIsRejected" classname="com.fitpulse.service.impl.UserServiceImplProfileUpdateTest" time="0.006"/>
+  <testcase name="duplicateEmailIsRejected" classname="com.fitpulse.service.impl.UserServiceImplProfileUpdateTest" time="0.005"/>
 </testsuite>

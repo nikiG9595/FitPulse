@@ -24,9 +24,9 @@ public class ProfileController {
 
     @GetMapping(&quot;/profile&quot;)
     public String profile(Model model) {
-<span class="nc" id="L27">        model.addAttribute(&quot;user&quot;, userService.getCurrentUser());</span>
-<span class="nc" id="L28">        model.addAttribute(&quot;bookings&quot;, bookingService.getCurrentUserBookings());</span>
-<span class="nc" id="L29">        return &quot;profile&quot;;</span>
+<span class="fc" id="L27">        model.addAttribute(&quot;user&quot;, userService.getCurrentUser());</span>
+<span class="fc" id="L28">        model.addAttribute(&quot;bookings&quot;, bookingService.getCurrentUserBookings());</span>
+<span class="fc" id="L29">        return &quot;profile&quot;;</span>
     }
 
     @GetMapping(&quot;/profile/edit&quot;)
@@ -39,14 +39,14 @@ public class ProfileController {
     public String update(@Valid @ModelAttribute ProfileUpdateRequest profileUpdateRequest,
                          BindingResult bindingResult,
                          Model model) {
-<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) return &quot;profile-edit&quot;;</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (bindingResult.hasErrors()) return &quot;profile-edit&quot;;</span>
 
         try {
 <span class="fc" id="L45">            userService.updateCurrentUserProfile(profileUpdateRequest);</span>
 <span class="fc" id="L46">            return &quot;redirect:/profile?updated&quot;;</span>
-<span class="nc" id="L47">        } catch (FitPulseException exception) {</span>
-<span class="nc" id="L48">            model.addAttribute(&quot;globalError&quot;, exception.getMessage());</span>
-<span class="nc" id="L49">            return &quot;profile-edit&quot;;</span>
+<span class="fc" id="L47">        } catch (FitPulseException exception) {</span>
+<span class="fc" id="L48">            model.addAttribute(&quot;globalError&quot;, exception.getMessage());</span>
+<span class="fc" id="L49">            return &quot;profile-edit&quot;;</span>
         }
     }
 }

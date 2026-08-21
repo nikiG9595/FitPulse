@@ -22,8 +22,8 @@ public class MembershipController {
 
     @GetMapping
     public String all(Model model) {
-<span class="nc" id="L25">        model.addAttribute(&quot;memberships&quot;, membershipService.getAll());</span>
-<span class="nc" id="L26">        return &quot;memberships/list&quot;;</span>
+<span class="fc" id="L25">        model.addAttribute(&quot;memberships&quot;, membershipService.getAll());</span>
+<span class="fc" id="L26">        return &quot;memberships/list&quot;;</span>
     }
 
     @PostMapping(&quot;/{id}/choose&quot;)
@@ -34,8 +34,8 @@ public class MembershipController {
 
     @GetMapping(&quot;/create&quot;)
     public String create(Model model) {
-<span class="nc" id="L37">        prepare(model, new MembershipRequest());</span>
-<span class="nc" id="L38">        return &quot;memberships/form&quot;;</span>
+<span class="fc" id="L37">        prepare(model, new MembershipRequest());</span>
+<span class="fc" id="L38">        return &quot;memberships/form&quot;;</span>
     }
 
     @PostMapping(&quot;/create&quot;)
@@ -50,20 +50,20 @@ public class MembershipController {
 
     @GetMapping(&quot;/{id}/edit&quot;)
     public String edit(@PathVariable UUID id, Model model) {
-<span class="nc" id="L53">        prepare(model, membershipService.mapToRequest(id));</span>
-<span class="nc" id="L54">        model.addAttribute(&quot;membershipId&quot;, id);</span>
-<span class="nc" id="L55">        return &quot;memberships/form&quot;;</span>
+<span class="fc" id="L53">        prepare(model, membershipService.mapToRequest(id));</span>
+<span class="fc" id="L54">        model.addAttribute(&quot;membershipId&quot;, id);</span>
+<span class="fc" id="L55">        return &quot;memberships/form&quot;;</span>
     }
 
     @PostMapping(&quot;/{id}/edit&quot;)
     public String doEdit(@PathVariable UUID id, @Valid @ModelAttribute MembershipRequest membershipRequest, BindingResult bindingResult, Model model) {
-<span class="nc bnc" id="L60" title="All 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
-<span class="nc" id="L61">            prepare(model, membershipRequest);</span>
-<span class="nc" id="L62">            model.addAttribute(&quot;membershipId&quot;, id);</span>
-<span class="nc" id="L63">            return &quot;memberships/form&quot;;</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
+<span class="fc" id="L61">            prepare(model, membershipRequest);</span>
+<span class="fc" id="L62">            model.addAttribute(&quot;membershipId&quot;, id);</span>
+<span class="fc" id="L63">            return &quot;memberships/form&quot;;</span>
         }
-<span class="nc" id="L65">        membershipService.update(id, membershipRequest);</span>
-<span class="nc" id="L66">        return &quot;redirect:/memberships&quot;;</span>
+<span class="fc" id="L65">        membershipService.update(id, membershipRequest);</span>
+<span class="fc" id="L66">        return &quot;redirect:/memberships&quot;;</span>
     }
 
     @PostMapping(&quot;/{id}/delete&quot;)

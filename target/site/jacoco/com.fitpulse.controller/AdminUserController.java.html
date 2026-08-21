@@ -38,19 +38,19 @@ public class AdminUserController {
                              @Valid @ModelAttribute RoleChangeRequest roleChangeRequest,
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes) {
-<span class="pc bpc" id="L41" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
-<span class="nc" id="L42">            redirectAttributes.addFlashAttribute(&quot;error&quot;, &quot;Role must be either MEMBER or ADMIN&quot;);</span>
-<span class="nc" id="L43">            return &quot;redirect:/admin/users&quot;;</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
+<span class="fc" id="L42">            redirectAttributes.addFlashAttribute(&quot;error&quot;, &quot;Role must be either MEMBER or ADMIN&quot;);</span>
+<span class="fc" id="L43">            return &quot;redirect:/admin/users&quot;;</span>
         }
 
         try {
 <span class="fc" id="L47">            userService.changeRole(UUID.fromString(id), roleChangeRequest.getRole());</span>
 <span class="fc" id="L48">            redirectAttributes.addFlashAttribute(&quot;success&quot;, &quot;User role changed successfully.&quot;);</span>
-<span class="nc" id="L49">        } catch (IllegalArgumentException exception) {</span>
-<span class="nc" id="L50">            redirectAttributes.addFlashAttribute(&quot;error&quot;, &quot;Invalid user ID&quot;);</span>
-<span class="nc" id="L51">        } catch (FitPulseException exception) {</span>
-<span class="nc" id="L52">            redirectAttributes.addFlashAttribute(&quot;error&quot;, exception.getMessage());</span>
-<span class="pc" id="L53">        }</span>
+<span class="fc" id="L49">        } catch (IllegalArgumentException exception) {</span>
+<span class="fc" id="L50">            redirectAttributes.addFlashAttribute(&quot;error&quot;, &quot;Invalid user ID&quot;);</span>
+<span class="fc" id="L51">        } catch (FitPulseException exception) {</span>
+<span class="fc" id="L52">            redirectAttributes.addFlashAttribute(&quot;error&quot;, exception.getMessage());</span>
+<span class="fc" id="L53">        }</span>
 <span class="fc" id="L54">        return &quot;redirect:/admin/users&quot;;</span>
     }
 }

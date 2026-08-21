@@ -128,4 +128,30 @@ class ProgressControllerSecurityTest {
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash()
                         .attribute("error", "Delete rejected"));
     }
+
+    @Test
+    void invalidCreateSubmissionStaysOnFormWithoutCallingService() throws Exception {
+        mockMvc.perform(post("/progress/create").with(user("member").roles("MEMBER")).with(csrf())
+                        .param("weight", "10").param("recordedAt", "2999-01-01"))
+                .andExpect(status().isOk()).andExpect(view().name("progress/form"))
+                .andExpect(model().attributeHasFieldErrors("progressFormRequest", "weight", "recordedAt"));
+        org.mockito.Mockito.verify(progressService, org.mockito.Mockito.never())
+                .create(org.mockito.ArgumentMatchers.any());
+    }
+
+    @Test
+    void invalidEditPreservesRecordIdAndSuccessfulEditRedirects() throws Exception {
+        UUID id = UUID.randomUUID();
+        mockMvc.perform(post("/progress/{id}/edit", id).with(user("member").roles("MEMBER")).with(csrf())
+                        .param("weight", "10").param("recordedAt", "2020-01-01"))
+                .andExpect(status().isOk()).andExpect(view().name("progress/form"))
+                .andExpect(model().attribute("progressId", id));
+
+        mockMvc.perform(post("/progress/{id}/edit", id).with(user("member").roles("MEMBER")).with(csrf())
+                        .param("weight", "75.5").param("recordedAt", "2020-01-01"))
+                .andExpect(status().is3xxRedirection()).andExpect(redirectedUrl("/progress"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash()
+                        .attribute("success", "Progress record updated successfully."));
+        verify(progressService).update(org.mockito.ArgumentMatchers.eq(id), org.mockito.ArgumentMatchers.any());
+    }
 }

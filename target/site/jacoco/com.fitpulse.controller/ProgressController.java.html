@@ -46,8 +46,8 @@ public class ProgressController {
                            BindingResult bindingResult,
                            Model model,
                            RedirectAttributes redirectAttributes) {
-<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
-<span class="nc" id="L50">            return &quot;progress/form&quot;;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
+<span class="fc" id="L50">            return &quot;progress/form&quot;;</span>
         }
         try {
 <span class="fc" id="L53">            progressService.create(progressFormRequest);</span>
@@ -78,14 +78,14 @@ public class ProgressController {
                          BindingResult bindingResult,
                          Model model,
                          RedirectAttributes redirectAttributes) {
-<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        if (bindingResult.hasErrors()) {</span>
-<span class="nc" id="L82">            model.addAttribute(&quot;progressId&quot;, id);</span>
-<span class="nc" id="L83">            return &quot;progress/form&quot;;</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (bindingResult.hasErrors()) {</span>
+<span class="fc" id="L82">            model.addAttribute(&quot;progressId&quot;, id);</span>
+<span class="fc" id="L83">            return &quot;progress/form&quot;;</span>
         }
         try {
-<span class="nc" id="L86">            progressService.update(id, progressFormRequest);</span>
-<span class="nc" id="L87">            redirectAttributes.addFlashAttribute(&quot;success&quot;, &quot;Progress record updated successfully.&quot;);</span>
-<span class="nc" id="L88">            return &quot;redirect:/progress&quot;;</span>
+<span class="fc" id="L86">            progressService.update(id, progressFormRequest);</span>
+<span class="fc" id="L87">            redirectAttributes.addFlashAttribute(&quot;success&quot;, &quot;Progress record updated successfully.&quot;);</span>
+<span class="fc" id="L88">            return &quot;redirect:/progress&quot;;</span>
 <span class="fc" id="L89">        } catch (ProgressServiceException exception) {</span>
 <span class="fc" id="L90">            model.addAttribute(&quot;progressId&quot;, id);</span>
 <span class="fc" id="L91">            model.addAttribute(&quot;globalError&quot;, exception.getMessage());</span>
